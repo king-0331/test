@@ -1,0 +1,512 @@
+\documentclass[a4paper]{jarticle}
+\usepackage{amsmath,amssymb,latexsym}
+\pagestyle{empty}
+%%問いの枠
+%%\newcommand{\toi}[1]{\noindent\framebox[3em][c]{\bf #1}}
+%印刷部分の大きさの指定
+\setlength{\topmargin}{-50pt}
+\setlength{\oddsidemargin}{-3mm}
+\setlength{\evensidemargin}{-3mm}
+\setlength{\textheight}{25cm}
+\setlength{\textwidth}{16cm}
+\setlength{\footskip}{6mm}
+%両幅いっぱいにテキストを囲む枠
+\newenvironment{FRAME}{\begin{trivlist}\item[]
+  \hrule
+  \hbox to \linewidth\bgroup
+    \advance\linewidth by -30pt
+    \hsize=\linewidth
+    \vrule\hfill
+    \vbox\bgroup
+      \vskip15pt
+      \def\thempfootnote{\arabic{mpfootnote}}%foot note to arabic
+      \begin{minipage}{\linewidth}}{%
+      \end{minipage}\vskip15pt
+    \egroup\hfill\vrule
+  \egroup\hrule
+\end{trivlist}}
+
+%定理環境
+\usepackage{theorem}
+\theorembodyfont{\upshape }
+\theoremstyle{break}
+\newtheorem{Def}{定義}[section]
+\newtheorem{Toi}{問}[section]
+\newtheorem{Thm}{定理}[section]
+\newtheorem{Lem}[Thm]{補題}
+\newtheorem{Cor}[Thm]{系}
+%
+%  \begin{Thm}  ...  \end{Thm}
+%
+
+
+
+
+\title{数学の基礎事項}
+\date{}
+
+\begin{document}
+\maketitle 
+
+
+%section 1
+\section{数の種類}
+
+\begin{itemize}
+ \item 　自然数　偶数、奇数
+ \item 　正の整数、非負の整数
+ \item 　分数や小数（有理数）
+ \item 　無理数
+ \item 　複素数
+\end{itemize}
+
+
+
+
+\begin{Toi}
+  数のもつ性質にはどんなことがあるか、いくつか挙げてみてください。
+  また演算にはどういうことがありますか？
+\end{Toi}
+
+\begin{Toi}
+  未知数の含む式について、方程式の解と数の関係はどんなことが知られていますか？
+\end{Toi}
+
+\begin{Toi}
+  円周率のパイ($\pi$)や自然対数の底に使われるイー（$e$)はだいたいいくつ位ですか？
+  これらは超越数を呼ばれます。確率や統計にもよく表れる重要な数です。
+\end{Toi}
+
+
+
+% section 2
+\section{数列}
+
+
+自然数と1対1の対応
+\[ 
+\begin{array}{clllllll}
+ \hline\hline 
+  番号 & 1   & 2 & 3 & 4 &  \cdots & k & \cdots \\
+  \hline\hline 
+  数   & a_1 & a_2 &  a_3 &  a_4 &  \cdots &  a_k & \cdots \\ 
+ \hline 
+  数   & x^{(1)} &  x^{(2)} &  x^{(3)} &  x^{(4)} &  \cdots &  x^{(k)} &  \cdots \\
+ \hline 
+\end{array}
+\]
+添え数（番号）が2つついているもの
+    $(i,j)$ に対応して $a(i,j), a_{(i,j)}, a_{ij}$ 
+(カッコや誤解がなければカンマを省略することが多い)
+については2重和 $\sum_i \sum_j a(i,j)$ をもちいたり、
+２つを同時にまとめ、ひとつの$\sum_{i,j} a(i,j)$で表現します。
+有限個の和であれば、順序を入れ替えても同じですから、すべて同じ値と
+なります。ただし$\sum_i \sum_j a(i,j)$と$\sum_j \sum_i a(i,j)$の表現では
+前者については、先に$j$で足し算をしてから$i$で加え、この順が逆ものが後者です。
+有限個ではない場合には、一般には順序の交換も一般には成り立ちませんから、
+複雑になりますが、交換可能となる場合もあります。
+
+
+
+
+
+
+%section 3
+\section{ベクトルと行列}
+実数を長方形にならべてカッコでくくったもの。横を行とよび、縦を列とよぶ。
+数を対応させるために、添え数（インデックス）が
+組み$(i,j)$であり、その対応する実数$a_{i,j}$を成分あるいは要素とよぶ。、行と列
+    \[ (i,j)  \Rightarrow  a_{ij} \]
+
+縦(列）ベクトルと横(行）ベクトル:
+３行１列の行列と１行３列の行列とみなせる
+\[  \begin{pmatrix}
+      a \\ b \\ c \\
+    \end{pmatrix}
+    \qquad
+    \begin{array}{l}
+    \left( a, b, c \right) \\
+    \end{array}
+\]
+
+
+\noindent
+正方行列(3行3列)
+\[
+  \begin{pmatrix}
+        a_1 & a_2 & a_3 \\
+        b_1 & b_2 & b_3 \\
+        c_1 & c_2 & c_3
+      \end{pmatrix}
+\] 
+\noindent
+無限行列
+\[
+  A = \begin{pmatrix}
+        a_{11} & a_{12} & \cdots & \cdots  \\
+        a_{21} & a_{22} & \cdots & \cdots  \\
+        \cdots & \cdots & \cdots & \cdots  \\
+        a_{k1} & a_{k2} & \cdots & \cdots  \\
+        \cdots & \cdots & \cdots & \cdots  \\
+      \end{pmatrix}
+\] 
+
+\noindent
+行列の演算: (1)行列の和 $A+B$, (2)行列のスカラー倍 $cA$
+($c$スカラー)。
+ここでスカラーとはベクトルに対する概念で、実数として考えてよい。
+また
+行列の積の計算（内積）；$AB$, $BA$などをよく復習しておいてください。
+
+
+%section 4
+\section{和の記号}
+足し算をする一般項が規則的に表現できるときには、
+足し算を表す記号（シグマとよび） $\sum $ で書き表します。
+とくに範囲を指定しなくても
+自明であれば、和をとるインデックスの範囲を省略することもあります。
+またインデックス
+そのものを省略してしまうこともよくあります。
+
+インデックス変数 $k(=1, 2,  3, \cdots , N)$ に対応する第$k$項が $a_k$ ならば
+\[
+  \sum_{k=1}^{N} a_k = a_1 + a_2 + a_3 + a_4 + \cdots + a_k + \cdots + a_N
+\] 
+と表します。
+また
+\[
+   \sum_{j} x^{(j)} = x^{(1)} + x^{(2)} + x^{(3)} + x^{(4)} 
+   + \cdots + x^{(k)} + \cdots 
+\]
+\[
+   \sum_{i,j} a_{ij} = 
+    \begin{array}[t]{l}
+      \quad a_{11} + a_{12} + a_{13} + a_{14} + \cdots \\ 
+      + a_{21} + a_{22} + a_{23} + a_{24} + \cdots \\ 
+      + \cdots
+    \end{array}
+\]
+\[ 
+  \sum_{i=1}^3 \sum_{j=1}^2 a_{ij} =  \left\{ a_{11} + a_{12} \right\}
+                    + \left\{ a_{21} + a_{22} \right\}
+                    + \left\{ a_{31} + a_{32} \right\}
+\] 
+という意味を表しています。範囲があらかじめ分かっている場合には省略を
+することが多いです。インデックス変数には自然数がよく用いられます。
+
+\noindent
+\underline{和を求める計算式}
+\[
+\begin{array}{l}
+  \sum_{k=1}^n k = 1 + 2 + \cdots + n = \dfrac{n(n+1)}{2} \\[2ex] 
+  \sum_{k=1}^n c = c + c + \cdots + c = n c \quad
+   \text{（\mbox{ n} 個の定数和）} \\[2ex]
+  \sum_{k=1}^n (-1)^{(k-1)}/k = 
+  1 - 1/2 + 1/3 + \cdots + (\pm 1)^n/n \\[2ex]
+  \sum_{k=1}^n (2k-1)  = 1 + 3 + 5 + \cdots + (2n-1) = n^2 \\[2ex] 
+  \sum_{k=1}^n k^2 = 1^2 + 2^2 + \cdots + n^2 = \dfrac{n(n+1)(2n+1)}{6}
+  \quad \text{（2乗和の公式）} \\[2ex] 
+  \sum_{k=1}^n k(k+1) 
+  = 1\times 2 + 2\times 3 + \cdots + n\times (n+1) 
+  = \dfrac{n(n+1)(n+2)}{3}
+\end{array}
+\] 
+
+\begin{Toi}
+ （積が3つ）各項が3個の積のとき、$\sum_{k=1}^n k(k+1)(k+2)$がどういう式にまとめられるか
+  考えなさい。そして実際いくつかについて確かめてみなさい。
+\end{Toi}
+\begin{Toi}
+ （3乗和の計算）$\sum_{k=1}^n k^2$を、上の問いで得られた結果ももちいて、求めてみなさい。
+\end{Toi}
+\begin{Toi}
+  （三角型の和）$\sum_{k=1}^{n} \sum_{j=1}^{k} a_{kj}$ をそれぞれの項で書き並べてみましょう。
+  この和のとり方の順序がはじめ、列をとってから、行で加える順ですが、この順序を逆にして
+  はじめは行でとり、あとから列を加えることにすると、シグマを用いるとどういう式に
+  なりますか？
+\end{Toi}
+
+
+\begin{Toi}
+つぎの数列の和をシグマにより表現しなさい。
+\begin{enumerate}
+  \item $a_1 + a_3 + a_5 + \cdots+ a_{31}$
+  \item $\frac{1}{1^2} + \frac{1}{2^2} + \frac{1}{3^2} + \cdots + \frac{1}{n^2} +\cdots $
+  \item $\frac{1}{1} + (\frac{2}{1} + \frac{2}{2}) + (\frac{3}{1} + \frac{3}{2} + \frac{3}{3})
+ + (\frac{4}{1} + \frac{4}{2} + \frac{4}{3} + \frac{4}{4}) + \cdots $ 
+\end{enumerate}
+\end{Toi}
+
+
+
+
+%section 5
+\section{極限、級数}
+数列の和に関して、項の数をどんどん大きくしていった状況を考えてみます。
+有限個で終わるのではなく、無限に続いて多数の項をもつ数列を級数といいます。
+もしこの和を順次計算していったとき、項数とともに増加あるいは減少していく
+傾向をもち、ある一定の値に近づくならば、この極限値を級数の和といいます。
+つまり、部分和の極限値として
+$$ 
+   \lim_{N \rightarrow \infty} \sum_{n=1}^N a_n 
+  = \lim_{N \rightarrow \infty} S_N 
+  = \sum_{n=1}^{\infty} a_n = s
+$$
+と表します。
+しかし一般項がゼロに近づいていても、和をもつ（有限和の極限値が存在する）とは
+限りません。たとえば$a_n = 1/n$ などはその例です。これよりももっと早くゼロに
+なるような項でなければ、和をもちません。
+また
+ここで収束する(convergent)、つまり
+$S_n \rightarrow s (n \rightarrow \infty )$
+であることは
+絶対値で表される距離 $| S_n - s |$が$n$の増加としたがい、ゼロに近づくこと
+です。記号では$\lim_{n \rightarrow \infty } S_n = s $と表します。
+
+
+
+
+
+%section 6
+\section{対数、指数関数}
+確率や統計では、コイン投げ、サイコロ振りを多数回繰り返した場合をよく考えます。
+どんどんと繰り返し数を多くしていくので、数列の極限を調べることがとても重要な
+基本事項となります。このときに表れる関数が、対数関数や指数関数です。
+概要をつぎで述べてみましょう。
+
+
+
+\noindent
+\textbf{指数関数:}
+「べき」とは乗積のことで、正の数$a>0$ を$m$乗するとは、$a^m = a a \cdots a$ で
+明らかに $a^m a^n = a^{m+n}$などが成り立ち
+$m$を指数とよび、この性質を指数法則といいます。$m$は自然数だけで
+なく負とでもよくて、一般に整数であっても法則が成り立ち、さらに
+分数、実数についても拡張して定義されます。
+
+たとえば利率の計算では、元金が $a$ 円あり、複利の利率が各期間ごとに
+$r_n$であれば、$n$期日後には$a(1+r_n)^n$となります。
+もし利率の値$r_n = r/n$であり、$n$を大きくすると（利率の計算期間を
+細かくしていくこと）、$ a \lim_n (1+r_n)^n$ を考えることです。基本的な項は$r=1$とおいた
+$\lim_n (1+\dfrac{1}{n})^n$で、これは少しづつ増加し、
+数値３を超えることはない。この極限値を $e = 2.71828\cdots $と表します。
+一般に$\lim_n (1+r_n)^n = e^r = \exp r$とも表します。
+この$r$を変化させた値がいわゆる$y= \exp x, x>0$が指数関数と
+よばれるものです。先の述べた$a^m$の形が$e^x$となっています。
+
+\noindent
+\textbf{対数関数:}
+上で述べた指数関数は、べき乗を細かくすることで表れた関数でしたが、
+対数関数は、指数関数の逆関数として定義されます。大きな数を計算するときは
+たいへん重要な役割をします。計算機が十分に発達していない時代には
+対数表とよばれるものを用いて、大きな数の計算をしていました。
+
+与えられた指数関数に対して、その逆の対応を表す
+$$y=e^x= \exp x \quad \leftrightarrow \quad x = \log y$$ ものです。
+独立変数$x$ から従属変数$y$ の形で書けば、$y = \log x $ と表します。これは電卓などでは
+$y = Ln(x)$ とキー入力します。実用上の計算には$e$の代わりに
+$10$を用いて、$ y= Log(x)$とキー入力します。ここでは省略していますが
+対数の底（てい）が$e$（ネイピア数ともよばれる）の場合、つまり
+自然対数の場合と一方は底が$10$の場合での常用対数のものです。
+実用上の計算には、常用対数が便利ですが、理論の展開には
+自然対数のほうが表現が簡単になるときが多いです。どちらを使っても
+本質は変わりません。
+
+
+
+
+\section{集合}
+ある定まった数学的な対象の集まりあるいは集団を
+{\bf 集合}(set)とよび，この集合を構成する一つ一つの対象を
+集合の要素(element)あるいは、元という．
+一般に，集合は大文字をつかい $A,B$ などと表し、
+この要素は小文字$x,y$などをもちいる。ある要素$x$が
+集合$A$に属する(belong)かどうかによって定められている。
+もし属するならば
+$x \in  A$ 
+と表す．また，逆に，A の要素でないときは 
+$x \ni  A$ 
+と表す． 
+
+要素を並べ、括弧でくくることで
+$\{a,b,c,d,e\}$ や $\{x_1,x_2,x_3,\cdots \}$と表したり,
+あるいは｛要素|条件｝の形をもちいて、
+$\{x_i |  i=1,2,3,\cdots \}$や
+$\{x | a < x \leqq b\}$（つまり実数の半開区間$(a,b]$）
+などの表し方ももちいる。 
+
+とくに集合の中で全くこれに属する要素をもたない場合には
+{\bf 空集合}(empty set)とよび、$\emptyset $で表す。
+2つの集合において
+$ \forall x \in A \Rightarrow x \in B$
+が成り立つとき、$A \subset B$で表す。$A \subseteq B$も同じ意味で
+このとき、$A$は$B$の{\bf 部分集合}という。
+$A = B$とは、それぞれの部分集合であるときをいう。
+とくに真の部分集合とは
+$ A \subset B$かつ$A \ne B$のときであり、
+$A \subsetneq B$で表す。
+
+元（要素）の個数が有限個しか含まれないときを有限集合、
+そうでない場合、自然数の全体とか、実数の全体は無限集合と
+いう。
+
+\noindent
+{\bf 和集合と積集合} 数と数のあいだに足し算や引き算があるように、集合と集合のあいだにも演算を考える。
+
+$$\mbox{和集合}: \quad A \cup B = \{ x \mid x \in A \, \mbox{or} \, x \in B \} $$
+$$\mbox{積（共通）集合}: \quad A \cap B = A B = \{ x \mid x \in A \, \mbox{and} \, x \in B \} $$
+$\cap$を省略することもある。数の掛け算でも多くは省略している。
+
+積集合が空集合のとき、$A\cap B= AB =  \emptyset $には
+{\bf 互いに素}、あるいは共通部分がない、交わりをもたないなどという。
+{\bf 差集合}とは$A\setminus B =  \{ x \mid x \in A \, \mbox{and} \, x \notin B \} $
+いま対象とる全体の集合を$\Omega $(オメガ)とするとき,
+この全体集合$\Omega$ から$A$を引いた差集合、$\Omega \setminus A$を
+$A$の{\bf 補集合}(complement)といい、全体集合を明示せずに
+$A^c$や $\overline{A}$という記号をもちいる。
+
+
+交換法則と結合法則：演算の順序をかえることでも同じ場合にこの法則が
+成り立つという。
+$A \cup B = B \cup A$ などや 
+$(A \cup B)\cup C = A \cup (B\cup C)$など。したがって
+単にカッコをもちいず$A \cup B\cup C $と表しても問題ないということで
+この表現が意味をもつことになる。
+よって一般に多数のばあいについては
+$$
+\begin{array}{l}
+  \mbox{和集合}: \quad 
+   \bigcup_{i=1}^{n} A_i  
+   = \bigcup_i A_i
+   = A_1 \cup A_2 \cup \cdots \cup A_n, \\[2ex]
+  \mbox{積集合}: \quad 
+   \bigcap_{i=1}^{n} A_i  
+   = \bigcap_i A_i = A_1 \cap A_2 \cap \cdots \cap A_n.
+\end{array}
+$$
+と表す。
+分配法則：３つの集合に対して、和と積の順序について交換すると
+どうなるかという関係式をいう。これをみれば明らかなように
+通常の数の演算$+,\times $が集合の和、積に対応している。
+$$A \cup (B \cap C) = (A\cup B) \cap (A\cup C),\quad 
+A \cap (B \cup C) = (A\cap B) \cup (A\cap C)$$
+
+\noindent
+{\bf ドモルガン(de Morgan)の法則}: 和と差、あるいは積と差のあいだの分配法則を
+あらわすもの、
+$$
+\overline{A\cup B} = \overline{A }\cap \overline{B}, \qquad
+\overline{A\cap B} = \overline{A }\cup \overline{B}.
+$$
+一般に$n$個の集合$A_i, i=1,2,\cdots,n$についても同様に
+$$
+\overline{\bigcup_i A_i} = \bigcap_i \overline{A_i}, \qquad
+\overline{\bigcap_i A_i} = \bigcup_i \overline{A_i}.
+$$
+
+
+\noindent
+２つの集合の直積:
+それぞれの集合からとった作られる順序のついた全体からなる
+集合を{\bf 直積}といい、$A \times B$で表す。
+$A \times B = \{ (a,b) \mid a \in A, b \in B\}$
+掛け算の記号をつかっているが、その内容には注意をする。
+もし$A=\{ 1,2,3,4,5,6\}$であれば、$A\times A $は
+36個の要素をもつ$(i,j); i,j=1,2,\cdots,6$からなる集合で
+となる。これはサイコロを2個投げたときに出るすべての目の組の
+可能性を列挙したものとなる。
+
+
+
+
+
+集合族、べき集合：
+集合の集合、つまり元（要素）がまた集合となっているものを
+集合族(a family of sets)という。とくに{\bf べき集合}(power set)とは
+記号で集合$A$の部分集合全体$2^A$で表す。
+たとえば$A=\{2,4,5\}$の3個の
+有限集合ならば
+$2^A=\{ \emptyset , \{2 \}, \{4 \}, \{5 \},
+\{2,4 \}, \{2,5 \}, \{4,5 \}, \{2,4,5 \}  \}$の$2^3=8$個の
+集合となる。 
+
+
+上極限集合、下極限集合：無限個の集合族について積や和をとった
+の概念である。数に対する集合でも同じような概念が、集合の無限列に
+ついても定義されている。これは確率の定義をするときには重要な働きを
+する。
+
+
+
+
+
+
+\section{写像}
+写像(map,mapping)の定義は
+２つの集合$A,B$において一つの要素$x\in A$から他の一つ
+$y \in B$への対応が
+あるとき、これを$f$と表し、
+$ f : A \longrightarrow B $
+つまり$y =f(x), x \in A, y \in B$とおく。
+
+像(image)と逆像(inverse image) : 写像$f$で、$b=f(a)$のとき、
+$b$を$a$の像といい、$a$を$b$の原像という。集合について
+ある部分集合$A_1$で、$A_1 \subset A$のとき、 
+$f(A_1) = \{ f(a) \mid a \in A_1\}$を$A_1$の像といい、
+ある部分集合$B_1$で、$B_1 \subset B$のとき、 
+$f^{-1}(B_1) = \{ a \mid f(a) \in B_1\}$を$B_1$の逆像という。
+
+
+
+\begin{FRAME}
+{\bf 定理} 写像 $f : A \longrightarrow B$でつぎの集合間の関係式が成り立つ(ただし$A_i \subset A, B_i \subset B, i =1,2$).
+\begin{tabular}{ll}
+  (1)  $f(A_1 \cup A_2) = f(A_1) \cup f(A_2) $
+  & (2) $f(A_1 \cap A_2) \subset  f(A_1) \cap f(A_2) $ \quad (部分集合となる) \\ 
+  (3) $f^{-1}(B_1 \cup B_2) = f^{-1}(B_1) \cup f^{-1}(B_2) $
+  & (4) $f^{-1}(B_1 \cap B_2) = f^{-1}(B_1) \cap f^{-1}(B_2) $ \\ 
+  (5) $A_1 \subset f^{-1}(f(A_1))$ \quad (部分集合となる)
+  & (6) $f(f^{-1}(B_1)) \subset B_1$ \quad (部分集合となる)
+\end{tabular}
+\end{FRAME}
+なぜなら
+(2)については
+$$
+\begin{array}{ll}
+     & \{b \in B \mid b = f(a), \exists a \in A_1 \cap A_2 \} \\ 
+  \subset 
+     & \{b \in B \mid (b = f(a_1), \exists a_1 \in A_1) 
+  \, {\rm and} \, (b = f(a_2), \exists a_2 \in A_2) \}
+\end{array}
+$$
+であるから。
+
+\begin{Toi}
+たとえば実数上の2次関数$f(x) = x^2$において
+上の例になる集合をあげてみよ。
+答えのひとつにはつぎがあり、他の例も各自考えてみよ。$A_1 = [-3,1], A_2 = [-1,2], B_1=[-1,1]$
+\end{Toi}
+
+\vspace{2ex}
+写像としてとくに実数の集合を考えるには関数とよぶことが
+ふつうであり、関数の定められている範囲やとり得る値の範囲を
+定義域(domain)、 値域(range)とよぶ。
+また2つの関数の合成関数$f\circ g(x) = f(g(x))$とか
+逆関数$f^{-1}$、対数関数の逆関数として指数関数、指数関数の逆関数として
+対数関数、$f(x) = x^2 \, (x \geq 0)$の逆関数として
+$f^{-1}(x)= \sqrt{x}\, (x \geq 0)$も定義される。
+逆三角関数は三角関数の逆関数である。
+
+
+
+
+\vspace{2ex}
+
+
+
+
+
+
+
+
+\end{document}
