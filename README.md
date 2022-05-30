@@ -1,3 +1,3 @@
 # test
 
-this is a repository for exploreing git hub function.
+This is a repository for exploreing github function.
